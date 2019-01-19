@@ -7,30 +7,120 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <title>首页</title>
+    <link rel="import" href="./second.html">
+    <link rel="stylesheet" type="text/css" href="css/imageSprite.css" />
+    <link rel="stylesheet" type="text/css" href="css/copySprite.css" />
     <link rel="stylesheet/less" type="text/css" href="css/index.less" />
     <link rel="stylesheet/less" type="text/css" href="css/reset.less" />
+
 </head>
 <body>
-    <header class="headerNav" onclick="handleClick">
-        <div class="logoWrapper"></div>
-        <ul class="webOperateWrapper">
-            <li>保存到桌面</li>
-            <li>加入收藏</li>
-            <li>领取课件</li>
-            <li>课程安排</li>
-            <li>领取策略</li>
-        </ul>
-        <div class="userInfoWrapper">
-            <div class="userName"></div>
-            <div class="loginWrapper">
-                <div class="loginBtn">游客klsdfi</div>
-                <div class="registerBtn"></div>
+    <div id="indexPage">
+        <header class="headerNav clearFix">
+            <div class="logoWrapper logo"></div>
+            <div class="webOperateWrapper">
+                <a><i class="deskIcon"></i><span>保存到桌面</span></a>
+                <a><i class="collectIcon"></i><span>加入收藏</span></a>
+                <a><i class="lingqu"></i><span>领取课件</span></a>
+                <a><i class="courseIcon"></i><span>课程安排</span></a>
+                <a class="lqcl"></a>
             </div>
-        </div>
-    </header>
-    <footer></footer>
-<script src="./js/static/less.min.js" data-env="development"></script>
-<script src="./js/static/jquery.min.js"></script>
-<script src="./js/index.js"></script>
+            <div class="userInfoWrapper">
+                <div class="userName">游客klsdfi</div>
+                <a class="login"></a>
+                <a class="regist"></a>
+            </div>
+        </header>
+        <main class="indexContent clearFix">
+            <aside class="asideNav">
+                <a><i class="tipsIcon"></i><span>实时策略</span></a>
+                <a><i class="xiazai"></i><span>软件下载</span></a>
+                <a><i class="rili"></i><span>VIP内参</span></a>
+                <a><i class="kefuIcon"></i><span>老师介绍</span></a>
+                <a><i class="rilia"></i><span>财经日历</span></a>
+                <a><i class="flashIcon"></i><span>实时快讯</span></a>
+                <a><i class="movie"></i><span>手机直播</span></a>
+            </aside>
+            <div class="videoWrapper">
+                <div class="videoInfo clearFix">
+                    <i class="videoIcon"></i>
+                    <a class="reFreshBtn">刷新</a>
+                    <a>当前在线:<span class="countEle">5104</span>人</a>
+                    <a>累计服务:<span class="countEle">51040</span>人</a>
+                    <a>lskdjflskdjflskdjf</a>
+                </div>
+                <div class="videoPlayer"></div>
+                <div class="videoBanner">
+                    <div class="videoNav">
+                        <a class="firstNav">指数大赢家 放大您的收益</a>
+                        <a class="secondNav">跟单利器 限时免费</a>
+                        <a class="thirdNav">金牛社区</a>
+                    </div>
+                    <img class="firstNavImg" src="images/banner/advance.jpg">
+                </div>
+            </div>
+            <div class="chatWrapper">
+                <div class="chatNotice">
+                    <i class="noticeIcon"></i>
+                    <marquee id="noticeScroll" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5" direction="left">
+                        金牛社区，国际期货盈利领导者 高准确率！原油 黄金 恒指全天直播 在线答疑 顶尖战法 ！
+                    </marquee>
+                </div>
+            </div>
+            <div class="asideRightTab asideShow">
+                <a>建仓提醒</a>
+                <a>马甲升级</a>
+                <a>错单解套</a>
+                <a>账户诊断</a>
+                <a>申请一对一</a>
+                <a class="serviceTabClose">X</a>
+            </div>
+            <div class="asideRightTab singleTab">
+                <a class="serviceTabOpen">管家式服务</a>
+            </div>
+        </main>
+        <footer class="indexFooter">
+            分析师及管理员所发表言论均代表其个人对市场所持观点。投资有风险©入市需谨慎
+        </footer>
+    </div>
+    <script type="text/javascript" src="./js/static/less.min.js" data-env="development"></script>
+    <script type="text/javascript" src="./js/static/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/static/layer.js"></script>
+    <!--<script src="./js/index.js"></script>-->
+    <script type="text/javascript">
+        $(function () {
+            // $("#noticeScroll").start();
+            $('.login').on("click",function(){
+                layer.open({
+                    type: 1,
+                    title: false, //不显示标题栏
+                    skin: 'layui-layer-demo',
+                    closeBtn: false,
+                    shadeClose: true,
+                    area: '540px;',
+                    shade: 0.8,
+                    id: 'LAY_layuipro', //设定一个id，防止重复弹出
+                    btnAlign: 'c',
+                    moveType: 1, //拖拽模式，0或者1
+                    content: $("#registerWrapper"),
+                    success: function(layero){
+
+                    }
+                });
+            });
+            $('.serviceTabClose').on("click",function(){
+                $(this).parents(".asideRightTab").toggleClass("asideShow");
+                $(this).parents(".asideRightTab").siblings(".asideRightTab").toggleClass("asideShow");
+            });
+            $('.serviceTabOpen').on("click",function(){
+                $(this).parents(".asideRightTab").toggleClass("asideShow");
+                $(this).parents(".asideRightTab").siblings(".asideRightTab").toggleClass("asideShow");
+            });
+        });
+    </script>
 </body>
+<div id="registerWrapper">
+    <div class="registerBg"></div>
+    <div class="regRight"></div>
+</div>
 </html>
