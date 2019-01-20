@@ -137,16 +137,20 @@
                 line-height: 36px;
                 color: #fff;
                 font-weight: 700;
-                a {
+                .videoNavItem {
                     cursor: pointer;
                     border-bottom: 2px solid;
-                    &:hover {
-                        border-color: #da420c;
-                    }
+                }
+                .hoverItem {
+                    border-color: #da420c;
                 }
             }
-            img {
+            .videoNavImg {
                 width: 100%;
+                display: none;
+            }
+            .defaultItem {
+                display: block;
             }
         }
     }
@@ -248,8 +252,84 @@
 
 
 }
-#registerWrapper {
-    display: flex;
+.loginWrapper, .registerWrapper {
+    display: none;
+}
+.layui-layer .registerWrapper {
+    display: block;
+    position: relative;
+    .closeRegisterModal {
+        position: absolute;
+        width: 56px;
+        height: 34px;
+        right: 0;
+        top: 0;
+    }
+    .contactCustomer {
+        position: absolute;
+        width: 164px;
+        height: 30px;
+        bottom: 23px;
+        left: ~'calc(50% - 82px)'
+    }
+}
+.layui-layer .loginWrapper {
+    display: flex!important;
+    .login_bg {
+        text-align: center;
+        span {
+            font-size: 26px;
+            color: #fdca16;
+            font-weight: 400;
+            line-height: 4;
+            text-align: center;
+        }
+    }
+    .layui-form {
+        width: ~'calc(100% - 170px)';
+        background: #efefef;
+        .loginHeader {
+            font-size: 24px;
+            color: #5e5e5e;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 400;
+        }
+        .layui-form-item {
+            &:nth-child(4) {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                .layui-form-checked[lay-skin=primary] i {
+                    border-color: #0684ea;
+                    background-color: #0684ea;
+                }
+                .passWordOperate {
+                    margin-left: 50px;
+                    a {
+                        color: #ff866f!important;
+                        cursor: pointer;
+                        &:hover {
+                            border-bottom: 1px solid #ff866f;
+                        }
+                    }
+                }
+            }
+            &:nth-child(5) {
+                .layui-input-block {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+
+        }
+        .layui-input-block {
+            margin: 0 15px;
+            .layui-input {
+                height: 44px;
+            }
+        }
+    }
 }
 .indexFooter {
     color: #fff;

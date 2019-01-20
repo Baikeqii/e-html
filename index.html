@@ -8,6 +8,7 @@
     <meta name="renderer" content="webkit">
     <title>首页</title>
     <link rel="import" href="./second.html">
+    <link type="text/css"  rel="stylesheet" href="css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="css/imageSprite.css" />
     <link rel="stylesheet" type="text/css" href="css/copySprite.css" />
     <link rel="stylesheet/less" type="text/css" href="css/index.less" />
@@ -27,8 +28,8 @@
             </div>
             <div class="userInfoWrapper">
                 <div class="userName">游客klsdfi</div>
-                <a class="login"></a>
-                <a class="regist"></a>
+                <a class="login" onclick="handleShowLoginModal()"></a>
+                <a class="regist" onclick="handleShowRegisterModal()"></a>
             </div>
         </header>
         <main class="indexContent clearFix">
@@ -40,6 +41,7 @@
                 <a><i class="rilia"></i><span>财经日历</span></a>
                 <a><i class="flashIcon"></i><span>实时快讯</span></a>
                 <a><i class="movie"></i><span>手机直播</span></a>
+                <a><i class="movie"></i><span>微信扫一扫</span></a>
             </aside>
             <div class="videoWrapper">
                 <div class="videoInfo clearFix">
@@ -52,11 +54,13 @@
                 <div class="videoPlayer"></div>
                 <div class="videoBanner">
                     <div class="videoNav">
-                        <a class="firstNav">指数大赢家 放大您的收益</a>
-                        <a class="secondNav">跟单利器 限时免费</a>
-                        <a class="thirdNav">金牛社区</a>
+                        <a class="videoNavItem hoverItem">指数大赢家 放大您的收益</a>
+                        <a class="videoNavItem">跟单利器 限时免费</a>
+                        <a class="videoNavItem">金牛社区</a>
                     </div>
-                    <img class="firstNavImg" src="images/banner/advance.jpg">
+                    <img class="videoNavImg defaultItem" src="images/banner/advance.jpg">
+                    <img class="videoNavImg" src="images/banner/advance2.jpg">
+                    <img class="videoNavImg" src="images/banner/advance3.jpg">
                 </div>
             </div>
             <div class="chatWrapper">
@@ -73,10 +77,10 @@
                 <a>错单解套</a>
                 <a>账户诊断</a>
                 <a>申请一对一</a>
-                <a class="serviceTabClose">X</a>
+                <a class="serviceTabClose" onclick="handleChangeServiceTab(this)">X</a>
             </div>
             <div class="asideRightTab singleTab">
-                <a class="serviceTabOpen">管家式服务</a>
+                <a class="serviceTabOpen" onclick="handleChangeServiceTab(this)">管家式服务</a>
             </div>
         </main>
         <footer class="indexFooter">
@@ -85,42 +89,109 @@
     </div>
     <script type="text/javascript" src="./js/static/less.min.js" data-env="development"></script>
     <script type="text/javascript" src="./js/static/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/static/layer.js"></script>
+    <script type="text/javascript" src="js/static/layer.js"></script>
+    <script type="text/javascript" src="./js/static/layui.js"></script>
     <!--<script src="./js/index.js"></script>-->
     <script type="text/javascript">
         $(function () {
-            // $("#noticeScroll").start();
-            $('.login').on("click",function(){
-                layer.open({
-                    type: 1,
-                    title: false, //不显示标题栏
-                    skin: 'layui-layer-demo',
-                    closeBtn: false,
-                    shadeClose: true,
-                    area: '540px;',
-                    shade: 0.8,
-                    id: 'LAY_layuipro', //设定一个id，防止重复弹出
-                    btnAlign: 'c',
-                    moveType: 1, //拖拽模式，0或者1
-                    content: $("#registerWrapper"),
-                    success: function(layero){
-
-                    }
+            layui.use(['form'], function() {
+                var form = layui.form;
+                form.on('submit(loginForm)', function(data)
+                {
+                    layer.alert(JSON.stringify(data.field), {
+                        title: '最终的提交信息'
+                    })
+                    return false;
                 });
             });
-            $('.serviceTabClose').on("click",function(){
-                $(this).parents(".asideRightTab").toggleClass("asideShow");
-                $(this).parents(".asideRightTab").siblings(".asideRightTab").toggleClass("asideShow");
-            });
-            $('.serviceTabOpen').on("click",function(){
-                $(this).parents(".asideRightTab").toggleClass("asideShow");
-                $(this).parents(".asideRightTab").siblings(".asideRightTab").toggleClass("asideShow");
+            $(".videoNavItem").on("mouseover", function () {
+                $(this).addClass("hoverItem");
+                $(this).siblings().removeClass("hoverItem");
             });
         });
+
+        function handleChangeServiceTab(ele)
+        {
+            $(ele).parents(".asideRightTab").toggleClass("asideShow");
+            $(ele).parents(".asideRightTab").siblings(".asideRightTab").toggleClass("asideShow");
+        }
+        function handleShowLoginModal()
+        {
+            layer.open({
+                type: 1,
+                title: false, //不显示标题栏
+                skin: 'layui-layer-demo',
+                closeBtn: false,
+                shadeClose: true,
+                area: '540px;',
+                shade: 0.8,
+                id: 'LAY_layuipro', //设定一个id，防止重复弹出
+                btnAlign: 'c',
+                moveType: 1, //拖拽模式，0或者1
+                content: $(".loginWrapper"),
+                success: function(layero){
+
+                }
+            });
+        }
+        function handleShowRegisterModal()
+        {
+            layer.open({
+                type: 1,
+                title: false,
+                skin: 'layui-layer-demo',
+                closeBtn: false,
+                shadeClose: true,
+                area: '600px;',
+                shade: 0.8,
+                id: 'LAY_layuipro',
+                btnAlign: 'c',
+                moveType: 1,
+                content: $(".registerWrapper"),
+                success: function(layero){
+
+                }
+            });
+        }
+
+        function handleCloseRegisterModal() {
+            layer.closeAll()
+        }
+
     </script>
 </body>
-<div id="registerWrapper">
-    <div class="registerBg"></div>
-    <div class="regRight"></div>
+<div class="loginWrapper">
+    <div class="login_bg"><span>会员登录</span></div>
+    <form class="layui-form" action="" lay-filter="loginForm">
+        <div class="loginHeader">会员登录</div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="account" required lay-verify="required" autocomplete="off" placeholder="请输入您的手机号或邮箱" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="password" required lay-verify="required" autocomplete="off" placeholder="请输入您的手机号或邮箱" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="checkbox" name="rememberPassword" lay-skin="primary" title="记住密码">
+            </div>
+            <div class="passWordOperate">
+                <a>会员注册</a>
+                <a>忘记密码</a>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <div class="login2" lay-submit="" lay-filter="loginForm"></div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="registerWrapper registerBg">
+    <a class="closeRegisterModal" onclick="handleCloseRegisterModal()"></a>
+    <a class="contactCustomer"></a>
 </div>
 </html>
