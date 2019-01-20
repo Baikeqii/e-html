@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>首页</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport"  content="width=device-width,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
-    <title>首页</title>
     <link rel="import" href="./second.html">
     <link type="text/css"  rel="stylesheet" href="css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="css/imageSprite.css" />
@@ -48,7 +47,7 @@
                     <a class="reFreshBtn">刷新</a>
                     <a>当前在线:<span class="countEle">5104</span>人</a>
                     <a>累计服务:<span class="countEle">51040</span>人</a>
-                    <a>lskdjflskdjflskdjf</a>
+                    <a></a>
                 </div>
                 <div class="videoPlayer"></div>
                 <div class="videoBanner">
@@ -68,6 +67,77 @@
                     <marquee id="noticeScroll" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5" direction="left">
                         金牛社区，国际期货盈利领导者 高准确率！原油 黄金 恒指全天直播 在线答疑 顶尖战法 ！
                     </marquee>
+                </div>
+                <div class="chatRecord">
+                    <div class="chatAds lqhl"></div>
+                    <div class="chatRecordItem clearFix">
+                        <span class="sendTime">17:00</span>
+                        <img class="senderSign" src="./images/icon/huangjin.gif">
+                        <div class="msgWrapper clearFix">
+                            <a class="senderName" title="上课交电费上课交电费上课交电费上课交电费上课交">上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费</a>
+                            <span class="msgContent">
+                            <i class="liaokuang"></i>
+                            <span class="contentText">善良的看法就是懒得看</span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="chatRecordItem clearFix">
+                        <span class="sendTime">17:00</span>
+                        <img class="senderSign" src="./images/icon/huangjin.gif">
+                        <div class="msgWrapper clearFix">
+                            <a class="senderName" title="上课交电费上课交电费上课交电费上课交电费上课交">上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费</a>
+                            <span class="msgContent">
+                            <i class="liaokuang"></i>
+                            <span class="contentText">善良的看法就是懒得看</span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="chatRecordItem clearFix">
+                        <span class="sendTime">17:00</span>
+                        <img class="senderSign" src="./images/icon/huangjin.gif">
+                        <div class="msgWrapper clearFix">
+                            <a class="senderName" title="上课交电费上课交电费上课交电费上课交电费上课交">上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费</a>
+                            <span class="msgContent">
+                            <i class="liaokuang"></i>
+                            <span class="contentText">善良的看法就是懒得看</span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="chatRecordItem clearFix">
+                        <span class="sendTime">17:00</span>
+                        <img class="senderSign" src="./images/icon/huangjin.gif">
+                        <div class="msgWrapper clearFix">
+                            <a class="senderName" title="上课交电费上课交电费上课交电费上课交电费上课交">上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费上课交电费</a>
+                            <span class="msgContent">
+                            <i class="liaokuang"></i>
+                            <span class="contentText">善良的看法就是懒得看</span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="msgSendWrapper">
+                    <div class="msgSenderHeader">↓↓↓国际期货盈利领导者，高准确率！精准布局，获取实时策略，点击下方QQ领取↓↓↓</div>
+                    <div class="customerWrapper">
+                        <a class="customerItem"><i class="qq"></i>助理多多</a>
+                        <a class="customerItem"><i class="qq"></i>助理多多</a>
+                        <a class="customerItem"><i class="qq"></i>助理多多</a>
+                        <a class="customerItem"><i class="qq"></i>助理多多</a>
+                        <a class="customerItem" onclick="getSignUpNameModal()">更多</a>
+                    </div>
+                    <div class="msgSendOperate clearFix">
+                        <div class="opeItem"><i class="messageIcon"></i>消息</div>
+                        <div class="opeItem"><i class="emojiIcon"></i>表情</div>
+                        <div class="opeItem" id="uploadPic"><i class="picIcon"></i>图片</div>
+                        <div class="opeItem"><i class="picIcon"></i>红包</div>
+                        <a class="recordZonOperate" onclick="handleScroll(this)"><i class="recordIcon unCheckedStatus"></i>滚动</a>
+                        <div class="recordZonOperate"><i class="recordIcon clearAllRecord"></i>清屏</div>
+                        <div class="funcLink ruanjianxiazai"></div>
+                        <div class="funcLink lingqukejian"></div>
+                    </div>
+                    <div class="msgTextArea">
+                        <input class="msgIpt" type="text" placeholder="原油 黄金 恒指全天直播 在线答疑 立即咨询！">
+                        <a class="msgSendBtn">发送</a>
+                    </div>
                 </div>
             </div>
             <div class="asideRightTab asideShow">
@@ -102,11 +172,16 @@
     <img class="nameAds" src="./images/banner/indexModal.jpg">
     <div class="customerWrapper">
         <a class="customerItem"><i class="qq"></i>助理多多</a>
-        <a class="customerItem">助理多多</a>
-        <a class="customerItem">助理多多</a>
+        <a class="customerItem"><i class="qq"></i>助理多多</a>
+        <a class="customerItem"><i class="qq"></i>助理多多</a>
     </div>
     <div class="bgimage"></div>
-    <div class="closeBtn" onclick="handleClose"></div>
+    <div class="closeBtn" onclick="handleCloseModal()"></div>
+</div>
+<div class="fiveMinutesWrapper random_bg">
+    <p class="tipHeader">恭喜您！在直播间听了5分钟</p>
+    <img src="./images/banner/tipsAds.jpg">
+    <div class="closeBtn" onclick="handleCloseModal()"></div>
 </div>
 <div class="loginWrapper">
     <div class="login_bg"><span>会员登录</span></div>
@@ -139,7 +214,7 @@
     </form>
 </div>
 <div class="registerWrapper registerBg">
-    <a class="closeRegisterModal" onclick="handleCloseRegisterModal()"></a>
+    <a class="closeRegisterModal" onclick="handleCloseModal()"></a>
     <a class="contactCustomer"></a>
 </div>
 </html>

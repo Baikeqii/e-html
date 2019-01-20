@@ -62,12 +62,16 @@
 
 .indexContent {
     //height: ~'calc(100% - 81px)';
-    //overflow: auto;
-    min-height: ~'calc(100% - 81px)';
+    height: ~'calc(100% - 81px)';
+    min-height: 638px;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     position: relative;
     .asideNav {
         width: 88px;
+        height: 100%;
+        overflow: auto;
         margin-right: 2px;
         border-radius: 5px;
         background: linear-gradient(to bottom, #5674a3, #2d4676);
@@ -120,12 +124,12 @@
             }
         }
         .videoPlayer {
-            height: 200px;
+            height: 68%;
             background: #000000;
             border-radius: 0 0 5px 5px;
         }
         .videoBanner {
-            height: 179px;
+            height: ~'calc(32% - 28px)';
             background: rgba(51,51,51,0.4);
             margin-top: 2px;
             border-radius: 5px;
@@ -159,6 +163,7 @@
     }
     .chatWrapper {
         width: ~'calc(50% - 90px)';
+        height: 100%;
         margin-left: 2px;
         .chatNotice {
             height: 25px;
@@ -174,6 +179,195 @@
                 font-weight: 700;
             }
         }
+        .chatRecord {
+            height: 68%;
+            overflow: auto;
+            position: relative;
+            padding-right: 22px;
+            .chatAds {
+                position: absolute;
+                right: 30px;
+                top: 0;
+                z-index: 1;
+            }
+            .chatRecordItem {
+                margin-top: 8px;
+                .sendTime, .senderSign, .msgWrapper, .senderName, .msgContent {
+                    float: left;
+                }
+                .senderSign {
+                    margin: 0 6px;
+                    height: 32px;
+                }
+                .sendTime {
+                    padding: 5px 0;
+                    width: 54px;
+                    text-align: center;
+                    background: #78aed6;
+                    border-radius: 5px;
+                    color: #fff;
+                }
+                .msgWrapper {
+                    width: ~'calc(100% - 130px)';
+                }
+                .senderName {
+                    width: 20%;
+                    cursor: pointer;
+                    background: #4153b0;
+                    color: #fff;
+                    font-size: 12px;
+                    font-weight: 400;
+                    padding: 8px 10px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    word-break: break-word;
+                }
+                .msgContent {
+                    display: flex;
+                    width: ~'calc(80% - 32px)';
+                    position: relative;
+                    padding-left: 12px;
+                    .liaokuang {
+                        position: absolute;
+                        left: 5px;
+                        top: 0;
+                    }
+                    .contentText {
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #333;
+                        background: #fff;
+                        padding: 6px 12px;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+        .msgSendWrapper {
+            height: ~'calc(32% - 28px)';
+            background: rgba(51, 51, 51, 0.4);
+            border-radius: 5px;
+            .msgSenderHeader {
+                height: 30px;
+                background: rgba(51,51,51,.4);
+                border-radius: 5px 5px 0 0;
+                line-height: 30px;
+                text-align: center;
+                color: #f33;
+                font-weight: 700;
+                font-size: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-break: break-word;
+            }
+            .customerWrapper {
+                display: flex;
+                padding: 0 8px;
+                .customerItem {
+                    display: flex;
+                    align-items: center;
+                    justify-content:center;
+                    cursor: pointer;
+                    margin: 8px 5px 0 0;
+                    background: url("../images/icon/1pxBg.png");
+                    width: 90px;
+                    height: 30px;
+                    border-radius: 3px;
+                    font-weight: 700;
+                    text-align: center;
+                    color: #333;
+                    line-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    word-break: break-word;
+                    .qq {
+                        margin: 0 4px;
+                    }
+                }
+            }
+            .msgSendOperate {
+                color: #e5e5e5;
+                padding: 8px 26px 0 8px;
+                .opeItem {
+                    float: left;
+                    display: flex;
+                    height: 24px;
+                    cursor: pointer;
+                    align-items: center;
+                    padding: 0 4px;
+                    border: 1px solid #ddd;
+                    border-radius: 3px;
+                    margin-right: 4px;
+                    i {margin-right: 4px;}
+                }
+                .recordZonOperate {
+                    float: left;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    height: 26px;
+                    background-color: #fff;
+                    color: #52697e;
+                    padding: 0 4px;
+                    margin-right: 4px;
+                }
+                .funcLink {
+                    float: right;
+                    margin: 2px 4px 0 0;
+                }
+            }
+            .msgTextArea {
+                padding-left: 8px;
+                margin-top: 15px;
+                .msgIpt {
+                    width: ~'calc(100% - 100px)';
+                    height: 50px;
+                    padding-left: 10px;
+                    color: #fff;
+                    background: transparent;
+                    border: 1px solid #ddd;
+                    border-radius: 3px;
+                    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+                        color: #fff100;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                        color: #fff100;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                        color: #fff100;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                        color: #fff100;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                }
+                .msgSendBtn {
+                    display: inline-block;
+                    width: 60px;
+                    height: 44px;
+                    border-radius: 5px;
+                    background: #eb6100;
+                    font-size: 18px;
+                    color: #fff;
+                    line-height: 44px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
+        }
+
     }
     .asideRightTab {
         position: absolute;
@@ -255,13 +449,37 @@
 
 
 }
-.loginWrapper, .registerWrapper, .indexNameModal, .indexModalB {
+.loginWrapper, .registerWrapper, .indexNameModal, .fiveMinutesWrapper {
     display: none;
 }
 .layui-layer {
-    .registerWrapper, .indexNameModal, .indexModalB {
+    .layui-layer-setwin .layui-layer-close2 {
+        width: 32px;
+        height: 32px;
+        top: -15px;
+        right: -15px;
+        margin-left: 0;
+        opacity: 0;
+    }
+    .registerWrapper, .indexNameModal, .fiveMinutesWrapper {
         display: block;
         position: relative;
+    }
+}
+.layui-layer .fiveMinutesWrapper {
+    position: relative;
+    .tipHeader {
+        color: #ffcc69;
+        padding: 22px 0;
+        font-size: 30px;
+        line-height: 38px;
+        text-align: center;
+        font-weight: 700;
+    }
+    .closeBtn {
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }
 .layui-layer .indexNameModal {
@@ -287,6 +505,7 @@
         .nameIpt {
             color: #353535;
             text-indent: 1em;
+            font-weight: 400;
             &::after {
                 display: inline-block;
                 width: 36px;
@@ -317,7 +536,7 @@
         padding-left: 22px;
         .customerItem {
             display: flex;
-            align-item: center;
+            align-items: center;
             cursor: pointer;
             margin: 8px 0 0 13px;
             background: url("../images/icon/1pxBg.png");
@@ -328,6 +547,13 @@
             text-align: center;
             color: #333;
             line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: break-word;
+            .qq {
+                margin: 0 4px;
+            }
         }
     }
     .bgimage {
