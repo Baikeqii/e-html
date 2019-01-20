@@ -9,7 +9,9 @@
 
 #indexPage {
     //height: 100%;
-    min-height: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: url("../images/icon/background.jpg") no-repeat center;
     background-size: cover;
 }
@@ -63,6 +65,7 @@
     //overflow: auto;
     min-height: ~'calc(100% - 81px)';
     display: flex;
+    position: relative;
     .asideNav {
         width: 88px;
         margin-right: 2px;
@@ -149,7 +152,7 @@
                 width: 100%;
                 display: none;
             }
-            .defaultItem {
+            .imgShowItem {
                 display: block;
             }
         }
@@ -173,7 +176,7 @@
         }
     }
     .asideRightTab {
-        position: fixed;
+        position: absolute;
         transition:all .3s;
         top: 90px;
         right: -50px;
@@ -252,12 +255,87 @@
 
 
 }
-.loginWrapper, .registerWrapper {
+.loginWrapper, .registerWrapper, .indexNameModal, .indexModalB {
     display: none;
 }
-.layui-layer .registerWrapper {
-    display: block;
+.layui-layer {
+    .registerWrapper, .indexNameModal, .indexModalB {
+        display: block;
+        position: relative;
+    }
+}
+.layui-layer .indexNameModal {
+    height: 427px;
     position: relative;
+    .closeBtn {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .nameTips {
+        color: #f4c262;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        padding-top: 12px;
+    }
+    .nameMsgWrapper {
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        margin-top: 5px;
+        .nameIpt {
+            color: #353535;
+            text-indent: 1em;
+            &::after {
+                display: inline-block;
+                width: 36px;
+                height: 36px;
+                background: url("../images/sprite/indexModal.png") no-repeat center;
+            }
+        }
+        .nameConfirmBtn {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .errorTips {
+            color: red;
+            font-size: 16px;
+            font-weight: 700;
+            margin-left: 10px;
+            display: none;
+        }
+    }
+    .nameAds {
+        margin-top: 10px;
+    }
+    .customerWrapper {
+        display: flex;
+        background: #2a2a2a;
+        height: 76px;
+        overflow: hidden;
+        padding-left: 22px;
+        .customerItem {
+            display: flex;
+            align-item: center;
+            cursor: pointer;
+            margin: 8px 0 0 13px;
+            background: url("../images/icon/1pxBg.png");
+            width: 90px;
+            height: 30px;
+            border-radius: 3px;
+            font-weight: 700;
+            text-align: center;
+            color: #333;
+            line-height: 30px;
+        }
+    }
+    .bgimage {
+        background-color: #2a2a2a;
+    }
+
+}
+.layui-layer .registerWrapper {
     .closeRegisterModal {
         position: absolute;
         width: 56px;

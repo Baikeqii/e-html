@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="css/copySprite.css" />
     <link rel="stylesheet/less" type="text/css" href="css/index.less" />
     <link rel="stylesheet/less" type="text/css" href="css/reset.less" />
-
 </head>
 <body>
     <div id="indexPage">
@@ -58,7 +57,7 @@
                         <a class="videoNavItem">跟单利器 限时免费</a>
                         <a class="videoNavItem">金牛社区</a>
                     </div>
-                    <img class="videoNavImg defaultItem" src="images/banner/advance.jpg">
+                    <img class="videoNavImg imgShowItem" src="images/banner/advance.jpg">
                     <img class="videoNavImg" src="images/banner/advance2.jpg">
                     <img class="videoNavImg" src="images/banner/advance3.jpg">
                 </div>
@@ -91,75 +90,24 @@
     <script type="text/javascript" src="./js/static/jquery.min.js"></script>
     <script type="text/javascript" src="js/static/layer.js"></script>
     <script type="text/javascript" src="./js/static/layui.js"></script>
-    <!--<script src="./js/index.js"></script>-->
-    <script type="text/javascript">
-        $(function () {
-            layui.use(['form'], function() {
-                var form = layui.form;
-                form.on('submit(loginForm)', function(data)
-                {
-                    layer.alert(JSON.stringify(data.field), {
-                        title: '最终的提交信息'
-                    })
-                    return false;
-                });
-            });
-            $(".videoNavItem").on("mouseover", function () {
-                $(this).addClass("hoverItem");
-                $(this).siblings().removeClass("hoverItem");
-            });
-        });
-
-        function handleChangeServiceTab(ele)
-        {
-            $(ele).parents(".asideRightTab").toggleClass("asideShow");
-            $(ele).parents(".asideRightTab").siblings(".asideRightTab").toggleClass("asideShow");
-        }
-        function handleShowLoginModal()
-        {
-            layer.open({
-                type: 1,
-                title: false, //不显示标题栏
-                skin: 'layui-layer-demo',
-                closeBtn: false,
-                shadeClose: true,
-                area: '540px;',
-                shade: 0.8,
-                id: 'LAY_layuipro', //设定一个id，防止重复弹出
-                btnAlign: 'c',
-                moveType: 1, //拖拽模式，0或者1
-                content: $(".loginWrapper"),
-                success: function(layero){
-
-                }
-            });
-        }
-        function handleShowRegisterModal()
-        {
-            layer.open({
-                type: 1,
-                title: false,
-                skin: 'layui-layer-demo',
-                closeBtn: false,
-                shadeClose: true,
-                area: '600px;',
-                shade: 0.8,
-                id: 'LAY_layuipro',
-                btnAlign: 'c',
-                moveType: 1,
-                content: $(".registerWrapper"),
-                success: function(layero){
-
-                }
-            });
-        }
-
-        function handleCloseRegisterModal() {
-            layer.closeAll()
-        }
-
-    </script>
+    <script src="./js/index.js"></script>
 </body>
+<div class="indexNameModal random_bg">
+    <p class="nameTips">取好名字，即能进入与专业分析师及投资达人在线交流哦！</p>
+    <div class="nameMsgWrapper">
+        <input placeholder="给自己取个好名字" class="nameIpt nameIptBg">
+        <a class="nameConfirmBtn"></a>
+        <span class="errorTips">该昵称已被占用！！！</span>
+    </div>
+    <img class="nameAds" src="./images/banner/indexModal.jpg">
+    <div class="customerWrapper">
+        <a class="customerItem"><i class="qq"></i>助理多多</a>
+        <a class="customerItem">助理多多</a>
+        <a class="customerItem">助理多多</a>
+    </div>
+    <div class="bgimage"></div>
+    <div class="closeBtn" onclick="handleClose"></div>
+</div>
 <div class="loginWrapper">
     <div class="login_bg"><span>会员登录</span></div>
     <form class="layui-form" action="" lay-filter="loginForm">

@@ -1,5 +1,8 @@
 .videoIcon { background-image: url(../images/sprite/sprit.png); background-position: 0px -125px; background-size: 107px 366px; width: 25px; height: 25px; }
 .noticeIcon { background-image: url(../images/sprite/sprit.png); background-position: 0px -92px; background-size: 107px 366px; width: 25px; height: 25px; }
+.nameIptBg { background-image: url(../images/sprite/indexModal.png); background-position: 0px -157px; background-size: 230px 250px; width: 225px; height: 38px; }
+.nameConfirmBtn { background-image: url(../images/sprite/indexModal.png); background-position: 0px 0px; background-size: 230px 250px; width: 115px; height: 38px; }
+.closeBtn { background-image: url(../images/sprite/indexModal.png); background-position: 0px -108px; background-size: 230px 250px; width: 32px; height: 32px; }
 
 
 
