@@ -1,5 +1,6 @@
 $(() =>
 {
+    //初始化项
     getAutomaticLayer();
     handleUploadFile();
     handleLoginUser();
