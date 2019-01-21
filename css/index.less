@@ -104,7 +104,7 @@
             i {
                 float: left;
             }
-            a:not(:last-child) {
+            a {
                 margin-left: 2%;
                 float: left;
                 cursor: pointer;
@@ -112,8 +112,20 @@
                     opacity: .6;
                 }
             }
-            a:last-child {
+            #timeCountdown {
                 float: right;
+                padding: 2px 0;
+                span {
+                    display: inline-block;
+                    padding: 0 2px;
+                    background: red;
+                    color: #fff;
+                    border-radius: 2px;
+                    margin-right: 3px;
+                    &:nth-of-type(1) {
+                        margin-left: 6px;
+                    }
+                }
             }
             .countEle {
                 color: #fcff00;
@@ -495,19 +507,18 @@
     }
     .nameMsgWrapper {
         display: flex;
-        align-items:center;
+        align-items: center;
         justify-content: center;
         margin-top: 5px;
         .nameIpt {
             color: #353535;
             text-indent: 1em;
             font-weight: 400;
-            &::after {
-                display: inline-block;
-                width: 36px;
-                height: 36px;
-                background: url("../images/sprite/indexModal.png") no-repeat center;
-            }
+
+        }
+        .randomDice {
+            position: absolute;
+            left: 51%;
         }
         .nameConfirmBtn {
             display: inline-block;

@@ -1,6 +1,7 @@
 $(() =>
 {
     //初始化项
+    timeCountdown('timeCountdown');
     getAutomaticLayer();
     handleUploadFile();
     handleLoginUser();
@@ -22,15 +23,18 @@ function getAutomaticLayer()
 }
 
 function handleUploadFile() {
-    layui.use('upload', function(){
+    layui.use('upload', () =>
+    {
         let upload = layui.upload,
             uploadInst = upload.render({
             elem: '#uploadPic'
             ,url: '/upload/' //上传接口
-            ,done: function(res){
+            ,done: res =>
+            {
 
             }
-            ,error: function(){
+            ,error: () =>
+            {
 
             }
         });
@@ -50,9 +54,7 @@ function getFiveMinModal()
         btnAlign: 'c',
         moveType: 1,
         content: $(".fiveMinutesWrapper"),
-        cancel: function(index, layero){
-            layer.close(index)
-        }
+        cancel: (index, layero) => layer.close(index)
     });
 }
 
@@ -75,16 +77,19 @@ function handleLoginUser()
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             });
+            // layer.close(layer.index);
             return false;
         });
     });
 }
 
+let signUpIndex;
+
 function getSignUpNameModal()
 {
     layer.ready(() =>
     {
-        layer.open({
+        signUpIndex = layer.open({
             type: 1,
             title: false,
             skin: 'layui-layer-demo',
@@ -95,11 +100,21 @@ function getSignUpNameModal()
             btnAlign: 'c',
             moveType: 1,
             content: $(".indexNameModal"),
-            cancel: function(index, layero){
-                layer.close(index)
-            }
+            cancel: (index, layero) => layer.close(index)
         });
     })
+}
+
+function handleCloseSignUpModal() {
+    layer.close(signUpIndex)
+}
+
+function getRandomName()
+{
+    let nameArr = ["小q", "小w", "小e", "小r", "小t"],
+        index =  Math.floor((Math.random() * nameArr.length));
+
+    $(".nameIpt").val(nameArr[index]);
 }
 
 function handleChangeServiceTab(ele)
@@ -120,7 +135,7 @@ function handleShowLoginModal()
         shade: 0.8,
         id: 'LAY_login',
         btnAlign: 'c',
-        moveType: 1, //拖拽模式，0或者1
+        moveType: 1,
         content: $(".loginWrapper")
     });
 }
@@ -155,4 +170,56 @@ function handleScroll(ele)
         toggleCls = isChecked ? "recordIcon unCheckedStatus" : "recordIcon checkedStatus";
 
         currentEle.attr("class", toggleCls)
+}
+
+//时分秒倒计时方法
+function timeCountdown(eleId)
+{
+    let element = document.getElementById(eleId);
+
+    if(element)
+    {
+        let endTimer=element.getAttribute('data-timer'),
+            endTime=new Date(
+                parseInt(endTimer.substr(0, 4), 10),
+                parseInt(endTimer.substr(4, 2), 10),
+                parseInt(endTimer.substr(6, 2), 10),
+                parseInt(endTimer.substr(8, 2), 10),
+                parseInt(endTimer.substr(10, 2), 10),
+                parseInt(endTimer.substr(12, 2), 10)
+            ),
+            endTimeMonth=endTime.getMonth()-1;
+
+        endTime.setMonth(endTimeMonth);
+
+        let ts = endTime - new Date();
+
+        if( ts > 0 )
+        {
+            let dd = parseInt(ts / 1000 / 60 / 60 / 24, 10),
+                hh = parseInt(ts / 1000 / 60 / 60 % 24, 10),
+                mm = parseInt(ts / 1000 / 60 % 60, 10),
+                ss = parseInt(ts / 1000 % 60, 10);
+
+            dd = dd < 10 ? ("0" + dd) : dd;   //天
+            hh = hh < 10 ? ("0" + hh) : hh;   //时
+            mm = mm < 10 ? ("0" + mm) : mm;   //分
+            ss = ss < 10 ? ("0" + ss) : ss;   //秒
+
+            document.getElementById("timer_d").innerHTML = dd;
+            document.getElementById("timer_h").innerHTML = hh;
+            document.getElementById("timer_m").innerHTML = mm;
+            document.getElementById("timer_s").innerHTML = ss;
+
+            setTimeout(() => timeCountdown(eleId), 1000);
+
+        }
+        else
+        {
+            document.getElementById("timer_d").innerHTML = 0;
+            document.getElementById("timer_h").innerHTML = 0;
+            document.getElementById("timer_m").innerHTML = 0;
+            document.getElementById("timer_s").innerHTML = 0;
+        }
+    }
 }

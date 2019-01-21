@@ -47,7 +47,13 @@
                     <a class="reFreshBtn">刷新</a>
                     <a>当前在线:<span class="countEle">5104</span>人</a>
                     <a>累计服务:<span class="countEle">51040</span>人</a>
-                    <a></a>
+                    <div id="timeCountdown" data-timer="20190628140203">
+                        剩余时长
+                        <span id="timer_d">0</span>天
+                        <span id="timer_h">0</span>:
+                        <span id="timer_m">0</span>:
+                        <span id="timer_s">0</span>
+                    </div>
                 </div>
                 <div class="videoPlayer"></div>
                 <div class="videoBanner">
@@ -162,11 +168,15 @@
     <script type="text/javascript" src="./js/static/layui.js"></script>
     <script src="./js/index.js"></script>
 </body>
+
+<!------------------------------------------------弹框内容---------------------------------------------------->
+<!--名字弹框-->
 <div class="indexNameModal random_bg">
     <p class="nameTips">取好名字，即能进入与专业分析师及投资达人在线交流哦！</p>
     <div class="nameMsgWrapper">
         <input placeholder="给自己取个好名字" class="nameIpt nameIptBg">
-        <a class="nameConfirmBtn"></a>
+        <span class="randomDice" onclick="getRandomName()"></span>
+        <a class="nameConfirmBtn" onclick="handleCloseSignUpModal()"></a>
         <span class="errorTips">该昵称已被占用！！！</span>
     </div>
     <img class="nameAds" src="./images/banner/indexModal.jpg">
@@ -176,13 +186,15 @@
         <a class="customerItem"><i class="qq"></i>助理多多</a>
     </div>
     <div class="bgimage"></div>
-    <div class="closeBtn" onclick="handleCloseModal()"></div>
+    <div class="closeBtn"></div>
 </div>
+<!--页面停留5分钟弹框-->
 <div class="fiveMinutesWrapper random_bg">
     <p class="tipHeader">恭喜您！在直播间听了5分钟</p>
     <img src="./images/banner/tipsAds.jpg">
     <div class="closeBtn" onclick="handleCloseModal()"></div>
 </div>
+<!--登录弹框-->
 <div class="loginWrapper">
     <div class="login_bg"><span>会员登录</span></div>
     <form class="layui-form" action="" lay-filter="loginForm">
@@ -213,6 +225,7 @@
         </div>
     </form>
 </div>
+<!--注册弹框-->
 <div class="registerWrapper registerBg">
     <a class="closeRegisterModal" onclick="handleCloseModal()"></a>
     <a class="contactCustomer"></a>
